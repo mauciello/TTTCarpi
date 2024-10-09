@@ -29,7 +29,7 @@ public class LNM : MonoBehaviourPunCallbacks
     }
     public override void OnLeftRoom()
     {
-        PhotonNetwork.LoadLevel("SampleScene");
+        PhotonNetwork.LoadLevel("Menu");
     }
 
     public override void OnDisconnected(DisconnectCause cause)

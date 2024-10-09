@@ -17,13 +17,15 @@ public class PhotonConnection : MonoBehaviourPunCallbacks
     {
         
         JoinOrCreateRoom(); //ayuda de luigi
-        PhotonNetwork.LoadLevel("Gameplay");
+        PhotonNetwork.JoinOrCreateRoom("SalaPredeterminada", newRoomInfo(), null);
+        
 
     }
 
     public override void OnConnectedToMaster()
     {
-        PhotonNetwork.JoinOrCreateRoom("SalaPredeterminada",newRoomInfo(),null);
+        
+        PhotonNetwork.JoinLobby();
     }
 
     void JoinOrCreateRoom()
@@ -44,7 +46,7 @@ public class PhotonConnection : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         print("Se entro al room");
-        
+        PhotonNetwork.LoadLevel("Gameplay");
     }
 
 }

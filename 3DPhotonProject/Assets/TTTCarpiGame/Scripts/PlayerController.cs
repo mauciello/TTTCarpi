@@ -8,6 +8,7 @@ namespace Monke.TTTCarpi
 {
     public class PlayerController : MonoBehaviour
     {
+        [SerializeField] GameObject m_arrowSign;
         [SerializeField] Rigidbody m_rb;
         protected PhotonView m_pv;
         protected float xmov, ymov;
@@ -17,14 +18,24 @@ namespace Monke.TTTCarpi
         void Start()
         {
             m_rb = GetComponent<Rigidbody>();
+            m_pv = GetComponent<PhotonView>();
+
+            if (!m_pv.IsMine)
+            {
+                m_arrowSign.SetActive(false);
+            }
         }
 
         // Update is called once per frame
         void Update()
         {
-            xmov = Input.GetAxis("Horizontal");
-            ymov = Input.GetAxis("Vertical");
-            m_rb.velocity = new Vector3(xmov, 0, ymov) * m_speed;
+            if(m_pv.IsMine)
+            {
+                m_arrowSign.SetActive(true);
+                xmov = Input.GetAxis("Horizontal");
+                ymov = Input.GetAxis("Vertical");
+                m_rb.velocity = new Vector3(xmov, 0, ymov) * m_speed;
+            }
         }
     }
 }

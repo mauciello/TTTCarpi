@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/TTTCarpiGame/Scenes/Menu.unity
+- path: Assets/TTTCarpiGame/Scenes/Gameplay.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
